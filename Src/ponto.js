@@ -13,6 +13,9 @@ class Ponto {
 
     // Desenhar O Ponto
     desenhar() {
+        // Volta A Grossura Das Linhas Para O Padrão
+        strokeWeight();
+
         // Desenha O Circulo Do Ponto
         stroke(this.corDoCirculo);
         fill(this.corDoCirculo);
