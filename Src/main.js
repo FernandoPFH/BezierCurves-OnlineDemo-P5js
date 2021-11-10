@@ -1,5 +1,8 @@
 var pontos;
 
+var pontoMexido;
+var offsetPontoMexido;
+
 // Desenha Uma Linha De Referencia De Ligação Dos Pontos
 function desenharLinhaDeReferencia(pontoInicial,pontoFinal,corDaLinha=100,grossuraDaLinha=1) {
     stroke(corDaLinha);
@@ -97,6 +100,27 @@ function draw() {
     } else {
         document.body.style.cursor = "default";
     }
+}
+
+// Função Chamada Quando Um Botão Do Mouse É Pressionado E O Mouse É Mexido
+function mouseDragged() {
+    if (!pontoMexido) {
+        pontos.forEach(ponto => {
+            if (ponto.mouseEstaEmCima(mouseX,mouseY)) {
+                pontoMexido = ponto;
+                offsetPontoMexido = createVector(mouseX - ponto.posicao.x,mouseY - ponto.posicao.y)
+                pontoMexido.posicao = createVector(mouseX - offsetPontoMexido.x,mouseY - offsetPontoMexido.y);
+            }
+        })
+    } else {
+        pontoMexido.posicao = createVector(mouseX - offsetPontoMexido.x,mouseY - offsetPontoMexido.y);
+    }
+}
+
+// Função Chamada Quando Um Botão Do Mouse É Solto
+function mouseReleased() {
+    pontoMexido = null;
+    offsetPontoMexido = null;
 }
 
 // Troca O Tamanho Do Canvas Quando O Tamanho Da Tela É Mudado
