@@ -21,6 +21,9 @@ function desenharCurvaBezier(numeroDePontos=10,corDaLinha=100,grossuraDaLinha=1)
     strokeWeight(grossuraDaLinha);
     noFill();
     beginShape();
+    
+    vertex(pontos[0].posicao.x,pontos[0].posicao.y);
+
     for (let indice = 0; indice <= 1; indice+=1/Math.round(numeroDePontos)) {
         let valorInterpolacaoEmX_Ponto1 = (1-indice)**3 * pontos[0].posicao.x;
         let valorInterpolacaoEmX_Ponto2 = 3*indice*(1-indice)**2 * pontos[1].posicao.x;
@@ -36,8 +39,13 @@ function desenharCurvaBezier(numeroDePontos=10,corDaLinha=100,grossuraDaLinha=1)
 
         let valorInterpolacaoEmY = valorInterpolacaoEmY_Ponto1 + valorInterpolacaoEmY_Ponto2 + valorInterpolacaoEmY_Ponto3 + valorInterpolacaoEmY_Ponto4;
 
+        ultimoVertice = createVector(valorInterpolacaoEmX,valorInterpolacaoEmY);
+
         vertex(valorInterpolacaoEmX,valorInterpolacaoEmY);
     }
+    
+    vertex(pontos[3].posicao.x,pontos[3].posicao.y);
+
     endShape();
 }
 
@@ -47,7 +55,7 @@ function setup() {
     pontos = [
         new Ponto(
             nome = "A",
-            posicao = createVector(100,200),
+            posicao = createVector(windowWidth/8,windowHeight*7/8),
             tamanho = 25,
             corDoCirculo = 255,
             corDoTexto = 0,
@@ -56,19 +64,19 @@ function setup() {
         ),
         new Ponto(
             nome = "",
-            posicao = createVector(100,100),
+            posicao = createVector(windowWidth/8,windowHeight/8),
             tamanho = 10,
             corDoCirculo = 255
         ),
         new Ponto(
             nome = "",
-            posicao = createVector(200,100),
+            posicao = createVector(windowWidth*7/8,windowHeight/8),
             tamanho = 10,
             corDoCirculo = 255
         ),
         new Ponto(
             nome = "B",
-            posicao = createVector(200,200),
+            posicao = createVector(windowWidth*7/8,windowHeight*7/8),
             tamanho = 25,
             corDoCirculo = 255,
             corDoTexto = 0,
@@ -87,7 +95,7 @@ function draw() {
     }
 
     // Desenha A Curva Bézier
-    desenharCurvaBezier(10);
+    desenharCurvaBezier(100,color(0,255,0),3);
 
     // Desenha Cada Ponto Na Tela
     pontos.forEach(ponto => {
