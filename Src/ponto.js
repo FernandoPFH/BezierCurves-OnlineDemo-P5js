@@ -38,4 +38,9 @@ class Ponto {
             );
         }
     }
+
+    // Checa Se O Mouse Está Em Cima Do Ponto
+    mouseEstaEmCima(mouseX,mouseY) {
+        return Math.abs(mouseX - this.posicao.x) < this.tamanho/2 && Math.abs(mouseY - this.posicao.y) < this.tamanho/2;
+    }
 }

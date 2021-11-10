@@ -90,6 +90,13 @@ function draw() {
     pontos.forEach(ponto => {
         ponto.desenhar();
     });
+
+    // Troca O Ponteiro Do Mouse Se Ele Estiver Em Cima De Um Ponto
+    if (pontos.some(ponto => ponto.mouseEstaEmCima(mouseX,mouseY))) {
+        document.body.style.cursor = "move";
+    } else {
+        document.body.style.cursor = "default";
+    }
 }
 
 // Troca O Tamanho Do Canvas Quando O Tamanho Da Tela É Mudado
