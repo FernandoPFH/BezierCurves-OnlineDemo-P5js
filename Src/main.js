@@ -3,6 +3,8 @@ var pontos;
 var pontoMexido;
 var offsetPontoMexido;
 
+var tamanhoAtualCanvas;
+
 // Desenha Uma Linha De Referencia De Ligação Dos Pontos
 function desenharLinhaDeReferencia(pontoInicial,pontoFinal,corDaLinha=100,grossuraDaLinha=1) {
     stroke(corDaLinha);
@@ -51,6 +53,7 @@ function desenharCurvaBezier(numeroDePontos=10,corDaLinha=100,grossuraDaLinha=1)
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
+    tamanhoAtualCanvas = createVector(windowWidth, windowHeight);
     // Lista De Pontos
     pontos = [
         new Ponto(
@@ -133,5 +136,14 @@ function mouseReleased() {
 
 // Troca O Tamanho Do Canvas Quando O Tamanho Da Tela É Mudado
 function windowResized() {
+    pontos.forEach(ponto => {
+        let novaPosicaoXDoPonto = (ponto.posicao.x - 0) * (windowWidth - 0) / (tamanhoAtualCanvas.x - 0) + 0;
+        let novaPosicaoYDoPonto = (ponto.posicao.y - 0) * (windowHeight - 0) / (tamanhoAtualCanvas.y - 0) + 0;
+
+        ponto.posicao = createVector(novaPosicaoXDoPonto,novaPosicaoYDoPonto);
+    })
+
+    tamanhoAtualCanvas = createVector(windowWidth, windowHeight);
+
     resizeCanvas(windowWidth, windowHeight);
 }
