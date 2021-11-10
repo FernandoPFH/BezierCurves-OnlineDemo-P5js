@@ -12,6 +12,32 @@ function desenharLinhaDeReferencia(pontoInicial,pontoFinal,corDaLinha=100,grossu
     );
 }
 
+// Desenha Uma Curva Bézier Fazendo A Interpolação De Todos Os Pontos
+function desenharCurvaBezier(numeroDePontos=10,corDaLinha=100,grossuraDaLinha=1) {
+    stroke(corDaLinha);
+    strokeWeight(grossuraDaLinha);
+    noFill();
+    beginShape();
+    for (let indice = 0; indice <= 1; indice+=1/Math.round(numeroDePontos)) {
+        let valorInterpolacaoEmX_Ponto1 = (1-indice)**3 * pontos[0].posicao.x;
+        let valorInterpolacaoEmX_Ponto2 = 3*indice*(1-indice)**2 * pontos[1].posicao.x;
+        let valorInterpolacaoEmX_Ponto3 = 3*indice**2*(1-indice) * pontos[2].posicao.x;
+        let valorInterpolacaoEmX_Ponto4 = indice**3 * pontos[3].posicao.x;
+
+        let valorInterpolacaoEmX = valorInterpolacaoEmX_Ponto1 + valorInterpolacaoEmX_Ponto2 + valorInterpolacaoEmX_Ponto3 + valorInterpolacaoEmX_Ponto4;
+        
+        let valorInterpolacaoEmY_Ponto1 = (1-indice)**3 * pontos[0].posicao.y;
+        let valorInterpolacaoEmY_Ponto2 = 3*indice*(1-indice)**2 * pontos[1].posicao.y;
+        let valorInterpolacaoEmY_Ponto3 = 3*indice**2*(1-indice) * pontos[2].posicao.y;
+        let valorInterpolacaoEmY_Ponto4 = indice**3 * pontos[3].posicao.y;
+
+        let valorInterpolacaoEmY = valorInterpolacaoEmY_Ponto1 + valorInterpolacaoEmY_Ponto2 + valorInterpolacaoEmY_Ponto3 + valorInterpolacaoEmY_Ponto4;
+
+        vertex(valorInterpolacaoEmX,valorInterpolacaoEmY);
+    }
+    endShape();
+}
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
     // Lista De Pontos
@@ -56,6 +82,9 @@ function draw() {
     for (let indice = 0; indice < pontos.length - 1; indice++) {
         desenharLinhaDeReferencia(pontos[indice],pontos[indice+1]);
     }
+
+    // Desenha A Curva Bézier
+    desenharCurvaBezier(10);
 
     // Desenha Cada Ponto Na Tela
     pontos.forEach(ponto => {
