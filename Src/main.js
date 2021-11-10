@@ -1,8 +1,11 @@
+// Lista De Pontos
 var pontos;
 
+// Variaveis Para Uso Durante Movimento Dos Pontos
 var pontoMexido;
 var offsetPontoMexido;
 
+// Variavel Para Reajustar Os Ponto Baseado Na Posição Da Tela
 var tamanhoAtualCanvas;
 
 // Variaveis De Mudança Dos Valores Do Menu
