@@ -1,9 +1,92 @@
 <html>
     <head>
         <script src="Bibliotecas/p5.min.js"></script>
+        <script defer src="Bibliotecas/fontawesome/js/all.min.js"></script>
         <script src="Src/ponto.js"></script>
         <script src="Src/main.js"></script>
+        <script src="Src/menu.js"></script>
+        <link rel="stylesheet" href="Src/main.css">
     </head>
     <body>
+        <h1 class="Titulo">
+            Curva Bézier - Online Demo 
+        </h1>
+        <div class="Botao-Menu" id="Botao_Abrir_Menu" onclick="abrirMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="Modal-Background" onclick="fecharMenu()"></div>
+        <div class="Modal">
+            <div class="Modal-Conteudo">
+                <div class="Modal-Titulo">
+                    <h1>Configurações</h1>
+                </div>
+                <div class="Grupo-Configuracoes">
+                    <h2>Curva Bézier:</h2>
+                    <div class="Coluna-Condiguracao">
+                        <p>Número De Pontos:</p>
+                        <input type="range" id="Curva_Bezier_Numero_De_Pontos" value="100" min="1">
+                        <p id="Curva_Bezier_Numero_De_Pontos_Mostragem"></p>
+                    </div>
+                    <div class="Coluna-Condiguracao">
+                        <p>Grossura:</p>
+                        <input type="range" id="Curva_Bezier_Grossura" value="3" min="1">
+                        <p id="Curva_Bezier_Grossura_Mostragem"></p>
+                    </div>
+                    <div class="Coluna-Condiguracao">
+                        <p>Cor:</p>
+                        <input type="color" value="#00ff00" id="Curva_Bezier_Cor">
+                    </div>
+                </div>
+                <div class="Grupo-Configuracoes">
+                    <h2>Pontos Inicial e Final:</h2>
+                    <div class="Coluna-Condiguracao">
+                        <p>Tamanho:</p>
+                        <input type="range" id="Pontos_Extremos_Tamanho" value="25" min="1">
+                        <p id="Pontos_Extremos_Tamanho_Mostragem"></p>
+                    </div>
+                    <div class="Coluna-Condiguracao">
+                        <p>Cor:</p>
+                        <input type="color" value="#ffffff" id="Pontos_Extremos_Cor">
+                    </div>
+                    <div class="Coluna-Condiguracao">
+                        <p>Tamanho Da Letra:</p>
+                        <input type="range" id="Pontos_Extremos_Tamanho_Da_Letra" value="15" min="1">
+                        <p id="Pontos_Extremos_Tamanho_Da_Letra_Mostragem"></p>
+                    </div>
+                    <div class="Coluna-Condiguracao">
+                        <p>Cor Da Letra:</p>
+                        <input type="color" value="#000000" id="Pontos_Extremos_Cor_Da_Letra">
+                    </div>
+                </div>
+                <div class="Grupo-Configuracoes">
+                    <h2>Pontos de Referência:</h2>
+                    <div class="Coluna-Condiguracao">
+                        <p>Tamanho:</p>
+                        <input type="range" id="Pontos_Referencia_Tamanho" value="10" min="1">
+                        <p id="Pontos_Referencia_Tamanho_Mostragem"></p>
+                    </div>
+                    <div class="Coluna-Condiguracao">
+                        <p>Cor:</p>
+                        <input type="color" value="#ffffff" id="Pontos_Referencia_Cor">
+                    </div>
+                </div>
+                <div class="Grupo-Configuracoes">
+                    <h2>Retas de Referência:</h2>
+                    <div class="Coluna-Condiguracao">
+                        <p>Grossura:</p>
+                        <input type="range" id="Retas_Referencia_Grossura" value="1">
+                        <p id="Retas_Referencia_Grossura_Mostragem"></p>
+                    </div>
+                    <div class="Coluna-Condiguracao" style="padding-bottom: 15px;">
+                        <p>Cor:</p>
+                        <input type="color"value="#646464" id="Retas_Referencia_Cor">
+                    </div>
+                </div>
+                <div class="Grupo-Botoes">
+                    <button onclick="fecharMenu()" style="margin-right: 20px;">Fechar</button>
+                    <button>Teste</button>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

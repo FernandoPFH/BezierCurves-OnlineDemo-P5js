@@ -1,0 +1,119 @@
+body {
+    overflow: hidden;
+}
+
+canvas {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.Titulo {
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    z-index: 1;
+    color: white;
+    user-select: none;
+}
+
+.Botao-Menu {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+    z-index: 1;
+    font-size: 30;
+}
+
+.Botao-Menu:hover {
+    cursor: pointer;
+}
+
+.Modal-Background {
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: gray;
+    opacity: 90%;
+}
+
+.Modal {
+    display: none;
+    position: relative;
+    top: 10px;
+    z-index: 3;
+    width: 1150px;
+    height: 90%;
+    background-color: white;
+    opacity: 85%;
+    border-radius: 2%;
+    padding: 2%;
+    margin: auto;
+}
+
+.Modal-Conteudo {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.Modal-Titulo {
+    height: 70px;
+    align-items: center;
+}
+
+.Modal-Titulo h1 {
+    text-align: center;
+    margin: auto;
+    font-size: 50px;
+}
+
+.Configuracoes-Curva_Bezier {
+    width: 100%;
+}
+
+.Grupo-Configuracoes h2 {
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 2px;
+}
+
+.Coluna-Condiguracao {
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+    font-size: 25px;
+    position: relative;
+}
+
+.Coluna-Condiguracao p {
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Coluna-Condiguracao input {
+    margin: auto 0px;
+}
+
+.Coluna-Condiguracao img {
+    margin: auto 0px;
+}
+
+.Grupo-Botoes {
+    position: absolute;
+    bottom: 20px;
+    right:70px;
+    display: flex;
+    flex-direction: row;
+    margin-top: auto;
+}
+
+.Grupo-Botoes button {
+    font-size: 25;
+}
